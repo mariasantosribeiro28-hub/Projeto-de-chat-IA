@@ -11,15 +11,19 @@
     <input type="text" name="input" id="input" placeholder="Digite sua mensagem...">
     <button onclick="sendMessage()">Enviar</button>
     <script>
+        async function sendMessage(){
         const input = document.getElementById("input");
         const chat = document.getElementById("chat");
 
         const prompt = input.value;
         if (!prompt) return;
 
-        chat.innerHTML += `<div class="user"><b>Você:</b> ${prompt} </div>`
-            
-
+        chat.innerHTML += `<div class="user"><b>Você:</b> ${prompt} </div>`;
+        const responseDiv = document.createElement("div");
+        responseDiv.className = "bot";
+        responseDiv.innerHTML = "<b>IA:</b>";
+        chat.appendChild(responseDiv);
+        }    
     </script>
 </body>
 </html>
