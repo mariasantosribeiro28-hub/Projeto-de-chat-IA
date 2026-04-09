@@ -31,9 +31,30 @@
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({})
+                body: JSON.stringify({
+                    model: "codellama:7b",
+                    prompt: prompt,
+                    stream: true
+                })
             }
-        )
+        );
+
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+
+        while (true){
+           const { done, value } = await reader.read();
+           if (done) break;
+           const chunk = decoder.decode(value);
+
+           const lines = chunk.split("\n");
+
+           for (let line of lines){
+               if (line.trim()){
+                   
+               }
+           }
+        }
         }    
     </script>
 </body>
