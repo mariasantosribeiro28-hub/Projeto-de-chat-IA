@@ -51,7 +51,14 @@
 
            for (let line of lines){
                if (line.trim()){
-                   
+                   try {
+                       const json = JSON.parse(line);
+                       if(json.response){
+                           responseDiv.innerHTML += json.response;
+                       }
+                   } catch (error) {
+                       
+                   }
                }
            }
         }
